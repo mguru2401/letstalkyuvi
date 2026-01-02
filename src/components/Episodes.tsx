@@ -1,9 +1,11 @@
 import React from 'react'
 import '../styles/episodes.css'
+import { CiPlay1 } from 'react-icons/ci'
 
-import img1 from '../assets/hero/image_1.jpg'
-import img2 from '../assets/hero/image_2.jpg'
-import img3 from '../assets/hero/image_3.jpg'
+
+import img1 from '../assets/thumbnail/thumbnail_2.jpg'
+import img2 from '../assets/thumbnail/thumbnail_1.jpg'
+import img3 from '../assets/thumbnail/thumbnail_3.jpg'
 import img4 from '../assets/hero/image_4.jpg'
 
 interface Episode {
@@ -57,14 +59,7 @@ const episodeData: Episode[] = [
     category: 'Wellness',
     duration: '38 min',
   },
-  {
-    id: 6,
-    title: 'Brain Health and Neuroplasticity',
-    description: 'How your brain adapts, learns, and improves throughout life.',
-    image: img3,
-    category: 'Brain Health',
-    duration: '60 min',
-  },
+ 
 ]
 
 export const Episodes: React.FC = () => {

@@ -34,17 +34,6 @@ export const LookingForSpecific: React.FC = () => {
   return (
     <section className="looking-specific">
       <h1>Looking for something specific?</h1>
-      <p>Search the entire Huberman Lab content library.</p>
-
-      {/* Search */}
-      <div className="search-box">
-        <input placeholder="What are you looking for?" />
-        <button>
-          <FiSearch />
-          <span>return</span>
-        </button>
-      </div>
-
       {/* Topics */}
       <div className="topic-grid">
         {topics.map((topic, index) => (
