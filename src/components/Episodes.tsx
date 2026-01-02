@@ -1,6 +1,5 @@
 import React from 'react'
 import '../styles/episodes.css'
-import { CiPlay1 } from 'react-icons/ci'
 
 
 import img1 from '../assets/thumbnail/thumbnail_2.jpg'

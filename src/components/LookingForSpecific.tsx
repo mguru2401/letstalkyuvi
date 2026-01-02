@@ -8,7 +8,7 @@ import {
   FiPlusCircle,
   FiCpu,
   FiShare2,
-  FiSearch,
+  
 } from 'react-icons/fi'
 
 import '../styles/looking-for-specific.css'
