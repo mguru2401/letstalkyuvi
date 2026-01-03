@@ -17,26 +17,48 @@ export const Hero: React.FC = () => {
     <section className="hero">
 <Swiper
   modules={[Autoplay, Navigation, Pagination]}
-  navigation
-  pagination={{ clickable: true }}
-  centeredSlides
-  slidesPerView={1.4}
-  spaceBetween={56}
   loop
-  autoplay={{ delay: 3500, disableOnInteraction: false }}
   speed={800}
+  autoplay={{ delay: 3500, disableOnInteraction: false }}
+  pagination={{ clickable: true }}
+  navigation
+  breakpoints={{
+  0: {
+    slidesPerView: 1,
+    centeredSlides: false,
+    spaceBetween: 16,
+  },
+  768: {
+    slidesPerView: 1,
+    centeredSlides: false,
+    spaceBetween: 24,
+  },
+  1024: {
+    slidesPerView: 1.6,   // 👈 KEY FIX
+    centeredSlides: true,
+    spaceBetween: 40,
+  },
+  1280: {
+    slidesPerView: 2.2,   // 👈 only for large desktops
+    centeredSlides: true,
+    spaceBetween: 56,
+  },
+}}
+
+  className="hero-swiper"
 >
 
 
-        {[slide1, slide2, slide3, slide4].map((img, index) => (
+
+        {[slide1, slide2, slide3, slide4,slide1, slide2, slide3, slide4].map((img, index) => (
           <SwiperSlide key={index}>
             <div
               className="hero-card"
               style={{ backgroundImage: `url(${img})` }}
             >
-              <div className="card-overlay">
+              {/* <div className="card-overlay">
                 <button className="card-btn">Explore</button>
-              </div>
+              </div> */}
             </div>
           </SwiperSlide>
         ))}
