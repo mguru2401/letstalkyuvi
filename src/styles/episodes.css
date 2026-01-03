@@ -280,3 +280,44 @@
     width: 100%;
   }
 }
+/* ================= IMAGE SKELETON ================= */
+
+.image-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #eaeaea 25%,
+    #f5f5f5 37%,
+    #eaeaea 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: inherit;
+}
+
+.image-skeleton.featured {
+  height: 100%;
+}
+
+.image-skeleton.small {
+  height: 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+/* Prevent cached image bug */
+.img-hidden {
+  opacity: 0;
+}
+
+.img-visible {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}

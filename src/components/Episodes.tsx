@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../styles/episodes.css'
-
 
 import img1 from '../assets/thumbnail/thumbnail_2.jpg'
 import img2 from '../assets/thumbnail/thumbnail_1.jpg'
@@ -58,11 +57,19 @@ const episodeData: Episode[] = [
     category: 'Wellness',
     duration: '38 min',
   },
- 
 ]
 
 export const Episodes: React.FC = () => {
+  const [loaded, setLoaded] = useState<Record<number | 'featured', boolean>>({
+    featured: false,
+  })
+
   const [featured, ...list] = episodeData
+
+  /** ✅ Handle cached images */
+  const markLoaded = (key: number | 'featured') => {
+    setLoaded((prev) => ({ ...prev, [key]: true }))
+  }
 
   return (
     <section id="episodes" className="episodes">
@@ -72,10 +79,20 @@ export const Episodes: React.FC = () => {
           <p>Dive into our latest discussions on health and wellness</p>
         </div>
 
+        {/* ================= FEATURED ================= */}
         <div className="episodes-featured fade-in">
           <div className="featured-image">
-            <img src={featured.image} alt={featured.title} />
+            {!loaded.featured && <div className="image-skeleton featured" />}
+            <img
+              src={featured.image}
+              alt={featured.title}
+              loading="eager"   // 👈 important for hero
+              onLoad={() => markLoaded('featured')}
+              onError={() => markLoaded('featured')}
+              className={loaded.featured ? 'img-visible' : 'img-hidden'}
+            />
           </div>
+
           <div className="featured-content">
             <span className="episode-category">{featured.category}</span>
             <h3>{featured.title}</h3>
@@ -87,14 +104,30 @@ export const Episodes: React.FC = () => {
           </div>
         </div>
 
+        {/* ================= GRID ================= */}
         <div className="episodes-grid">
           {list.map((episode) => (
             <article key={episode.id} className="episode-small fade-in">
               <div className="small-thumb">
-                <img src={episode.image} alt={episode.title} />
+                {!loaded[episode.id] && (
+                  <div className="image-skeleton small" />
+                )}
+                <img
+                  src={episode.image}
+                  alt={episode.title}
+                  loading="lazy"
+                  onLoad={() => markLoaded(episode.id)}
+                  onError={() => markLoaded(episode.id)}
+                  className={
+                    loaded[episode.id] ? 'img-visible' : 'img-hidden'
+                  }
+                />
               </div>
+
               <div className="small-content">
-                <span className="episode-category small">{episode.category}</span>
+                <span className="episode-category small">
+                  {episode.category}
+                </span>
                 <h4>{episode.title}</h4>
                 <p className="excerpt">{episode.description}</p>
                 <div className="episode-meta">

@@ -5,6 +5,7 @@ import { Topics } from './components/Topics'
 import { Newsletter } from './components/Newsletter'
 import { Footer } from './components/Footer'
 import { LookingForSpecific } from './components/LookingForSpecific'
+import { Suspense } from 'react'
 
 function App() {
   return (
@@ -12,7 +13,10 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <Episodes />
+       <Suspense fallback={<div style={{ height: 600 }} />}>
+  <Episodes />
+</Suspense>
+
         <Topics />
         <Newsletter />
         <LookingForSpecific />
