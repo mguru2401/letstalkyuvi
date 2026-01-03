@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import '../styles/episodes.css'
@@ -7,6 +7,11 @@ import { useNavigate } from 'react-router-dom'
 
 const EpisodesAll: React.FC = () => {
   const navigate = useNavigate()
+
+  // 👇 Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
 
   return (
     <div className="app">
@@ -34,7 +39,9 @@ const EpisodesAll: React.FC = () => {
                   </div>
 
                   <div className="small-content">
-                    <span className="episode-category small">{ep.category}</span>
+                    <span className="episode-category small">
+                      {ep.category}
+                    </span>
                     <h4>{ep.title}</h4>
                     <p className="excerpt">{ep.description}</p>
                     <div className="episode-meta">
