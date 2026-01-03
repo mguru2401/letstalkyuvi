@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import '../styles/episodes.css'
 
 import img1 from '../assets/thumbnail/thumbnail_2.jpg'
