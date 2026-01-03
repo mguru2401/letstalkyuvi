@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
         <div className="header-content">
           <div className="logo">
             <h1>LetsTalkYuvi</h1>
-            <span className="tagline">Health & Wellness Insights</span>
+            <span className="tagline">Let’s talk about what really matters.</span>
           </div>
 
           <button
